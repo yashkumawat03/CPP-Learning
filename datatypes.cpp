@@ -2,6 +2,7 @@
 using namespace std;
 
 int main() {
+    //datatypes
     // int 
     //int x = 15;
     //long
@@ -35,6 +36,6 @@ int main() {
     string s1 = "Y";
     cout<<s1;
 
-
+    
      return 0;
 }
