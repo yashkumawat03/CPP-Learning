@@ -5,7 +5,7 @@ int main() {
     int n;
     cin >> n;
     for(int i = 0; i < n; i++) {
-        for(int j = 0; j < n; j++){yty
+        for(int j = 0; j < n; j++){
             cout << "*";
         }
     cout << endl;
@@ -13,5 +13,5 @@ int main() {
 
     return 0;
 }
-vv
+
 //Github 
