@@ -1,1 +1,1 @@
-It is not an Armstrong Number
+5
