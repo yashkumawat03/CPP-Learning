@@ -38,7 +38,6 @@ using namespace std;
 // }
 
 vector<int> rotateRight(vector<int> &arr,int n,int k){
-   
    int count = 1;
    while(count<=k){
       int temp = arr[n-1];
