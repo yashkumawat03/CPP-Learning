@@ -48,7 +48,10 @@ Node* deletehead(Node* head){
 
 //Delete the tail of DLL
 Node* deletetail(Node* head){
-    if(head ==NULL || head->next==NULL) return NULL;
+    if(head ==NULL || head->next==NULL){
+        head = NULL;
+        return NULL;
+    } 
     Node* tail = head;
     while(tail->next != NULL){
         tail = tail->next;
