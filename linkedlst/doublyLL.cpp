@@ -46,6 +46,110 @@ Node* deletehead(Node* head){
     return head;
 }
 
+//Delete the tail of DLL
+Node* deletetail(Node* head){
+    if(head ==NULL || head->next==NULL) return NULL;
+    Node* tail = head;
+    while(tail->next != NULL){
+        tail = tail->next;
+    }
+    Node* newtail = tail->back;
+    newtail->next = nullptr;
+    tail->back = nullptr;
+    delete tail;
+    return head;
+}
+
+//Delete the kth element of DLL
+Node* deletek(Node* head, int k){
+    if(head == NULL) return NULL;
+    int cnt = 0;
+    Node* knode = head;
+    while(knode != NULL){
+        cnt++;
+        if(cnt == k) break;
+        knode = knode->next;
+    }
+    Node* prev = knode->back;
+    Node* front = knode->next;
+
+    if(prev==NULL && front==NULL){
+        return NULL;
+    }
+    else if(prev == NULL){
+        return deletehead(head);
+    }
+    else if(front == NULL){
+        return deletetail(head);
+    }
+    prev->next = front;
+    front->back= prev;
+    knode->next= nullptr;
+    knode->back = nullptr;
+    delete knode;
+    return head;  
+}
+
+// Delete the element of the DLL
+void deleteele(Node* temp){
+    Node* prev = temp->back;
+    Node* front = temp->next;
+    if(front == NULL){
+        prev->next = nullptr;
+        temp->back = nullptr;
+        delete temp;
+        return;
+    }
+    prev->next = front;
+    front->back = prev;
+    temp->next = temp->back = nullptr;
+    free(temp);
+    
+}
+
+// INSERTION
+//Insertion before head
+Node* insertbeforehead(Node* head, int val){
+    Node* newhead = new Node(val,head,nullptr);
+    head->back=newhead;
+    return newhead;
+}
+
+//Insertion before tail
+Node* insertbeforetail(Node* head, int val){
+    if(head->next == NULL){
+        return insertbeforehead(head,val);
+    }
+    Node* tail = head;
+    while(tail->next!=NULL){
+        tail = tail->next;
+    }
+    Node* prev = tail->back;
+    Node* newnode = new Node(val,tail,prev);
+    prev->next = newnode;
+    tail->back = newnode;
+    return head;
+}
+
+//Insertion before kth element in DLL
+Node* insertbeforeK(Node* head, int k, int val){
+    if(k==1){
+        return insertbeforehead(head,val);
+    }
+    int cnt = 0;
+    Node* temp = head;
+    while(temp!=NULL){
+        cnt++;
+        if(cnt == k) break;
+        temp = temp->next;
+    }
+    Node* prev = temp->back;
+    Node* newNode = new Node(val,temp,prev);
+    prev->next = newNode;
+    temp->back = newNode;
+    return head;
+}
+
 // Print the array
 void print(Node* head){
     Node* temp = head;
@@ -58,7 +162,7 @@ void print(Node* head){
 int main(){
     vector<int> arr = {2,4,5,7,9};
     Node* head = Convertarr2DLL(arr);
-    head = deletehead(head);
+    head = insertbeforeK(head,4,100);
     print(head);
     return 0;
 }

@@ -76,7 +76,7 @@ Node* deletek(Node* head, int k){
     while(temp != NULL){
         cnt++;
         if(cnt == k){
-            prev->next =prev->next->next;
+            prev->next =temp->next;
             free(temp);
             break;
         }
@@ -189,13 +189,13 @@ int main(){
     
     // head = DeleteHead(head);
     // head= deletetail(head);
-    // head = deletek(head,2);
+     head = deletek(head,2);
     //head = deleteelement(head,15);
 
     //head = inserthead(head,15);
     //head = inserttail(head,100);
     //head = insertk(head,15,5);
-    head = insertbeforele(head,100,9);
+    //head = insertbeforele(head,100,9);
     printLL(head);
 
 }
