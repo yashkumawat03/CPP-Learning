@@ -24,6 +24,7 @@ class Node{
 };
 
 Node* sortLL(Node* head){
+    if(!head || !head->next) return head;
     Node* zerohead = new Node(-1);
     Node* onehead = new Node(-1);
     Node* twohead = new Node(-1);
@@ -50,6 +51,9 @@ Node* sortLL(Node* head){
     one->next = twohead->next;
     two->next = NULL;
     Node* newHead = zerohead->next;
+    delete zerohead;
+    delete onehead;
+    delete twohead;
     return newHead;
 }
 
